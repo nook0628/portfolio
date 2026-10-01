@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คุณสุกัญญา ทิพย์บุญผล (นุ๊กนึก) - Interactive Resume</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Sukhumvit / Kanit / Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'Kanit', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            500: '#334e68',
+                            800: '#102a43',
+                            900: '#0b1b2b',
+                        },
+                        brand: {
+                            blue: '#1e40af',
+                            sky: '#0284c7',
+                            light: '#e0f2fe',
+                            gold: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white !important; color: black !important; }
+            .shadow-xl, .shadow-md, .shadow-lg { box-shadow: none !important; }
+            .border { border-color: #cbd5e1 !important; }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-sky selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 glass-card border-b border-slate-200/80 transition-all duration-300 no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <span class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-sky-500 text-white flex items-center justify-center font-bold text-lg shadow-md">
+                        ส
+                    </span>
+                    <div>
+                        <a href="#hero" class="font-bold text-lg text-slate-900 tracking-tight hover:text-brand-blue transition">สุกัญญา ทิพย์บุญผล</a>
+                        <p class="text-xs text-slate-500 font-normal">Sukanya Thipbunphon (นุ๊กนึก)</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                    <a href="#about" class="text-slate-600 hover:text-brand-blue transition py-1">เกี่ยวกับฉัน</a>
+                    <a href="#experience" class="text-slate-600 hover:text-brand-blue transition py-1">ประสบการณ์</a>
+                    <a href="#skills" class="text-slate-600 hover:text-brand-blue transition py-1">ทักษะ</a>
+                    <a href="#education" class="text-slate-600 hover:text-brand-blue transition py-1">การศึกษา</a>
+                    <a href="#contact" class="text-slate-600 hover:text-brand-blue transition py-1">ติดต่อ</a>
+                    <button onclick="window.print()" class="bg-brand-blue hover:bg-navy-800 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        พิมพ์ / PDF
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button onclick="window.print()" class="p-2 text-slate-600 hover:text-brand-blue">
+                        <i data-lucide="printer" class="w-5 h-5"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 text-slate-600 hover:text-brand-blue focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile dropdown menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 bg-white/95 px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">เกี่ยวกับฉัน</a>
+            <a href="#experience" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">ประสบการณ์ทำงาน</a>
+            <a href="#skills" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">ทักษะและความสามารถ</a>
+            <a href="#education" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">ประวัติการศึกษา</a>
+            <a href="#contact" class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">ติดต่อ</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="hero" class="relative py-12 md:py-20 bg-gradient-to-b from-blue-50/50 via-slate-50 to-slate-50 overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left Column: Intro Details -->
+                    <div class="md:col-span-7 order-2 md:order-1 space-y-6 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-light text-brand-blue text-xs font-semibold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                            พร้อมเริ่มงาน &amp; เรียนรู้สิ่งใหม่
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 tracking-tight">
+                                สุกัญญา ทิพย์บุญผล
+                            </h1>
+                            <p class="text-xl sm:text-2xl font-medium text-brand-sky">
+                                Sukanya Thipbunphon <span class="text-slate-400 text-lg font-normal">(นุ๊กนึก)</span>
+                            </p>
+                            <p class="text-slate-600 font-medium text-base sm:text-lg pt-1">
+                                Supervisor / Administrative &amp; Store Operations Specialist
+                            </p>
+                        </div>
+
+                        <p class="text-slate-600 leading-relaxed max-w-2xl text-sm sm:text-base">
+                            ผู้มีความตั้งใจและรับผิดชอบสูง เชี่ยวชาญการบริหารจัดการงานธุรการสาขา การจัดตารางกะ การทำระบบเงินเดือน (Payroll) และการบริการลูกค้า มีจุดเด่นด้านการเรียนรู้งานรวดเร็วและปรับตัวเข้ากับเทคโนโลยีใหม่ๆ ได้เป็นอย่างดี
+                        </p>
+
+                        <!-- Quick Action Buttons -->
+                        <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
+                            <a href="#contact" class="bg-brand-blue hover:bg-navy-800 text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg shadow-blue-500/20 hover:shadow-xl transition-all flex items-center gap-2">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                                ติดต่อสมัครงาน
+                            </a>
+                            <button onclick="copyContactInfo()" class="bg-white border border-slate-300 hover:border-brand-sky text-slate-700 hover:text-brand-blue px-5 py-3 rounded-xl text-sm font-semibold shadow-sm transition-all flex items-center gap-2">
+                                <i data-lucide="copy" class="w-4 h-4"></i>
+                                คัดลอกเบอร์ / อีเมล
+                            </button>
+                        </div>
+
+                        <!-- Highlights Badge Row -->
+                        <div class="pt-4 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-3 gap-3 text-left">
+                            <div class="p-3 rounded-xl bg-white border border-slate-100 shadow-sm">
+                                <p class="text-xs text-slate-500">เกียรตินิยมอันดับ 1</p>
+                                <p class="text-sm font-bold text-navy-800">เกรดเฉลี่ย 3.81</p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white border border-slate-100 shadow-sm">
+                                <p class="text-xs text-slate-500">ประสบการณ์ทำงาน</p>
+                                <p class="text-sm font-bold text-navy-800">บริหาร &amp; คุมทีม</p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white border border-slate-100 shadow-sm col-span-2 sm:col-span-1">
+                                <p class="text-xs text-slate-500">ความเชี่ยวชาญ</p>
+                                <p class="text-sm font-bold text-navy-800">Payroll &amp; Admin</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Profile Image -->
+                    <div class="md:col-span-5 order-1 md:order-2 flex justify-center">
+                        <div class="relative group">
+                            <!-- Decorative background glow -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-sky-400 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
+                            
+                            <div class="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden shadow-2xl bg-white border-4 border-white">
+                                <img src="IMG_5653.JPG" 
+                                     alt="รูปโปรไฟล์ สุกัญญา ทิพย์บุญผล" 
+                                     onerror="this.onerror=null; this.src='https://placehold.co/400x500/1e40af/ffffff?text=Sukanya+T.';" 
+                                     class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
+                            </div>
+
+                            <!-- Floating badge -->
+                            <div class="absolute -bottom-4 -left-4 glass-card p-3 rounded-xl shadow-lg border border-slate-200/80 flex items-center gap-3">
+                                <div class="p-2 bg-emerald-100 text-emerald-600 rounded-lg">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold text-slate-800">พร้อมปรับตัว &amp; พัฒนา</p>
+                                    <p class="text-[10px] text-slate-500">เรียนรู้งานได้รวดเร็ว</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-12 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="border-l-4 border-brand-blue pl-4 mb-8">
+                    <h2 class="text-2xl font-bold text-navy-900">เกี่ยวกับฉัน (About Me)</h2>
+                    <p class="text-sm text-slate-500">ข้อมูลส่วนตัว ทัศนคติ และจุดเด่นในการทำงาน</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                    <!-- Bio Description -->
+                    <div class="md:col-span-2 space-y-4">
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 shadow-sm leading-relaxed text-slate-700 space-y-3">
+                            <p>
+                                "ชอบในการทำงานและมีความรับผิดชอบงานสูง ละเอียดรอบคอบในการจัดการเอกสารและระบบเงินเดือน มีจุดเด่นด้านการเรียนรู้งานรวดเร็วและปรับตัวเข้ากับเทคโนโลยีใหม่ๆ ได้ดี เข้ากับเพื่อนร่วมงานง่าย มีทักษะการทำงานเป็นทีม และพร้อมนำศักยภาพมาช่วยบริหารจัดการงานสาขาให้ประสบความสำเร็จ ชอบที่จะมองหาโอกาสในการพัฒนาตัวเองอยู่เสมอ"
+                            </p>
+                        </div>
+
+                        <!-- Core Traits Cards -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="p-4 rounded-xl bg-blue-50/50 border border-blue-100 flex items-start gap-3">
+                                <div class="p-2 bg-blue-600 text-white rounded-lg mt-0.5">
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-900 text-sm">ความละเอียดรอบคอบ</h4>
+                                    <p class="text-xs text-slate-600 mt-1">แม่นยำในการจัดทำเอกสาร บัญชี และระบบ Payroll ไม่ให้เกิดข้อผิดพลาด</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-sky-50/50 border border-sky-100 flex items-start gap-3">
+                                <div class="p-2 bg-sky-600 text-white rounded-lg mt-0.5">
+                                    <i data-lucide="zap" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-900 text-sm">เรียนรู้และปรับตัวไว</h4>
+                                    <p class="text-xs text-slate-600 mt-1">พร้อมรับเทคโนโลยีใหม่ๆ และปรับเปลี่ยนการทำงานตามเป้าหมายองค์กร</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Information Box -->
+                    <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-xl space-y-4">
+                        <h3 class="text-lg font-bold border-b border-slate-700 pb-3 flex items-center gap-2">
+                            <i data-lucide="user" class="w-5 h-5 text-brand-sky"></i>
+                            ข้อมูลส่วนบุคคล
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">ชื่อเล่น:</span>
+                                <span class="font-medium text-slate-200">นุ๊กนึก</span>
+                            </li>
+                            <li class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">วันเกิด:</span>
+                                <span class="font-medium text-slate-200">7 ตุลาคม 2001</span>
+                            </li>
+                            <li class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">อายุ:</span>
+                                <span class="font-medium text-slate-200">24 ปี</span>
+                            </li>
+                            <li class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">สัญชาติ:</span>
+                                <span class="font-medium text-slate-200">ไทย</span>
+                            </li>
+                            <li class="pt-1">
+                                <span class="text-slate-400 block mb-1">ที่อยู่ปัจจุบัน:</span>
+                                <span class="font-medium text-slate-200 text-xs leading-relaxed block">
+                                    403 โครงการเรสสิเด้น ตำบลฟ้าฮ่าม อำเภอเมือง จังหวัดเชียงใหม่ 50000
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="py-12 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="border-l-4 border-brand-blue pl-4 mb-10">
+                    <h2 class="text-2xl font-bold text-navy-900">ประสบการณ์ทำงาน (Work Experience)</h2>
+                    <p class="text-sm text-slate-500">ประวัติการทำงานและบทบาทหน้าที่ความรับผิดชอบ</p>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="relative border-l-2 border-slate-300 ml-3 sm:ml-6 space-y-10">
+                    
+                    <!-- Job 1 -->
+                    <div class="relative pl-6 sm:pl-8 group">
+                        <!-- Timeline Dot -->
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-blue border-4 border-white shadow-md group-hover:scale-125 transition"></div>
+                        
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <span class="inline-block px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-semibold mb-1">
+                                        ปัจจุบัน
+                                    </span>
+                                    <h3 class="text-lg font-bold text-navy-900">ซุปเปอร์ไวเซอร์ธุรการ</h3>
+                                    <p class="text-sm font-medium text-brand-sky">บริษัท คุ้ม คุ้ม จำกัด (โบนัสสุกี้ สาขาเชียงใหม่)</p>
+                                </div>
+                                <div class="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full w-fit">
+                                    13 ก.พ. 2026 - ปัจจุบัน
+                                </div>
+                            </div>
+
+                            <ul class="space-y-2 text-sm text-slate-700 mt-4">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                    <span>วางแผนและจัดตารางการทำงานสำหรับพนักงานในสาขาให้สอดคล้องกับปริมาณลูกค้าในแต่ละวัน</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                    <span>บริหารจัดการกำลังคนอย่างเหมาะสม เพื่อให้การปฏิบัติงานในสาขาเป็นไปอย่างราบรื่นและมีประสิทธิภาพสูงสุด</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                    <span>ติดตามและตรวจสอบการลงเวลาทำงาน การลา และการสลับกะของพนักงานในสาขา</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                    <span>จัดทำและตรวจสอบข้อมูลเงินเดือนพนักงาน รวมถึงค่าตอบแทนโอที และสวัสดิการต่างๆ อย่างถูกต้องแม่นยำ</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                    <span>จัดเก็บและดูแลระบบเอกสารต่างๆ เป็นหมวดหมู่ อย่างปลอดภัยและเป็นปัจจุบัน</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                    <span>ดำเนินการและประสานงานเอกสารภายในสาขาร่วมกับฝ่ายสนับสนุนที่เกี่ยวข้อง (เช่น ฝ่ายบุคคล ฝ่ายบัญชี)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Job 2 -->
+                    <div class="relative pl-6 sm:pl-8 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow-md group-hover:bg-brand-blue group-hover:scale-125 transition"></div>
+                        
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="text-lg font-bold text-navy-900">ฝ่ายผลิต / เทคนิค</h3>
+                                    <p class="text-sm font-medium text-brand-sky">บริษัท เอ็กซา ซีแลม จำกัด (Hexa Ceram)</p>
+                                </div>
+                                <div class="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full w-fit">
+                                    7 พ.ย. 2025 – 30 ม.ค. 2026
+                                </div>
+                            </div>
+
+                            <ul class="space-y-2 text-sm text-slate-700 mt-4">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                    <span>ปฏิบัติงานผลิตเครื่องมือแพทย์/ทันตกรรมด้วยความละเอียดแม่นยำสูงตามมาตรฐานที่กำหนด</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                    <span>ตรวจสอบคุณภาพสินค้า (QC) เพื่อให้มั่นใจว่าผลิตภัณฑ์ทุกชิ้นตรงตามมาตรฐานความปลอดภัย</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                    <span>ทำงานภายใต้ระบบระเบียบที่เคร่งครัดและเน้นความสะอาดเป็นสำคัญ</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Job 3 -->
+                    <div class="relative pl-6 sm:pl-8 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow-md group-hover:bg-brand-blue group-hover:scale-125 transition"></div>
+                        
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                <div>
+                                    <h3 class="text-lg font-bold text-navy-900">Sr. Staff</h3>
+                                    <p class="text-sm font-medium text-brand-sky">Major Cineplex (สาขาอุดรธานี)</p>
+                                </div>
+                                <div class="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full w-fit">
+                                    1 พ.ค. 2024 – 7 ต.ค. 2025
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                        <i data-lucide="trending-up" class="w-4 h-4 text-brand-blue"></i>
+                                        Sales &amp; Team Leadership
+                                    </h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed">
+                                        หัวหน้าทีมขายบัตรสมาชิก (M Pass/M Gen) ประจำสาขา รับผิดชอบวางแผนกระตุ้นยอดขาย และดูแลทีมให้บรรลุเป้าหมาย
+                                    </p>
+                                </div>
+
+                                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                        <i data-lucide="smile" class="w-4 h-4 text-brand-blue"></i>
+                                        Customer Service Excellence
+                                    </h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed">
+                                        ดูแลและแก้ไขปัญหาให้ลูกค้า (Complaint Handling) มอบประสบการณ์บริการตามมาตรฐานโรงภาพยนตร์อันดับหนึ่ง
+                                    </p>
+                                </div>
+
+                                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                        <i data-lucide="calculator" class="w-4 h-4 text-brand-blue"></i>
+                                        Financial &amp; Admin Management
+                                    </h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed">
+                                        ดูแลงานด้านบัญชีประจำสาขา และจัดการระบบเงินเดือน (Payroll) ของพนักงานภายในสาขาอย่างถูกต้อง
+                                    </p>
+                                </div>
+
+                                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                        <i data-lucide="users" class="w-4 h-4 text-brand-blue"></i>
+                                        Staff Supervision
+                                    </h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed">
+                                        ควบคุมดูแลการปฏิบัติงานของพนักงานให้เป็นไปตามกฎระเบียบและมาตรฐานความสะอาดขององค์กร
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-12 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="border-l-4 border-brand-blue pl-4 mb-8">
+                    <h2 class="text-2xl font-bold text-navy-900">ทักษะและความสามารถ (Skills)</h2>
+                    <p class="text-sm text-slate-500">ทักษะสำคัญที่นำมาประยุกต์ใช้ในการทำงาน</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Skill Card 1 -->
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-sky/50 transition">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-3 bg-blue-100 text-brand-blue rounded-xl">
+                                <i data-lucide="badge-dollar-sign" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-navy-900">Sales &amp; Negotiation</h3>
+                                <p class="text-xs text-slate-500">ทักษะการขายและการเจรจาต่อรอง</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            มีทักษะการขาย นำเสนอสิทธิประโยชน์ โน้มน้าวใจลูกค้า และบริหารยอดขายบัตรสมาชิก ร่วมกับความสามารถในการแก้ไขสถานการณ์เฉพาะหน้า
+                        </p>
+                    </div>
+
+                    <!-- Skill Card 2 -->
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-sky/50 transition">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-3 bg-emerald-100 text-emerald-600 rounded-xl">
+                                <i data-lucide="file-spreadsheet" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-navy-900">Accounting &amp; Payroll</h3>
+                                <p class="text-xs text-slate-500">การจัดการตัวเลข เอกสารบัญชี และเงินเดือน</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            รอบคอบในการคำนวณชั่วโมงทำงาน ค่า OT สวัสดิการ จัดเก็บระบบเอกสารอย่างเป็นหมวดหมู่ แม่นยำ และเป็นปัจจุบัน
+                        </p>
+                    </div>
+
+                    <!-- Skill Card 3 -->
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-sky/50 transition">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-3 bg-amber-100 text-amber-600 rounded-xl">
+                                <i data-lucide="store" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-navy-900">Operational Excellence</h3>
+                                <p class="text-xs text-slate-500">บริหารจัดการหน้าร้าน (Store Operations)</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            เข้าใจระบบการทำงานหน้าร้าน จัดตารางกะพนักงาน บริหารกำลังคนให้เหมาะกับปริมาณลูกค้า เพื่อประสิทธิภาพสูงสุด
+                        </p>
+                    </div>
+
+                    <!-- Skill Card 4 -->
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-brand-sky/50 transition">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="p-3 bg-purple-100 text-purple-600 rounded-xl">
+                                <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-navy-900">Service Mind Excellence</h3>
+                                <p class="text-xs text-slate-500">การบริการลูกค้าและรับมือกับข้อร้องเรียน</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            มีใจรักงานบริการ เน้นความพึงพอใจลูกค้า สื่อสารประนีประนอม จัดการข้อร้องเรียน (Complaint Handling) อย่างมืออาชีพ
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-12 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="border-l-4 border-brand-blue pl-4 mb-8">
+                    <h2 class="text-2xl font-bold text-navy-900">ประวัติการศึกษา (Education)</h2>
+                    <p class="text-sm text-slate-500">วุฒิการศึกษาและผลการเรียน</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Bachelor's Degree -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-amber-500 text-white text-[11px] font-bold px-3 py-1 rounded-bl-xl shadow-sm flex items-center gap-1">
+                            <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                            เกียรตินิยมอันดับ 1
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-blue-50 text-brand-blue rounded-2xl shrink-0 mt-1">
+                                <i data-lucide="graduation-cap" class="w-8 h-8"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h3 class="text-lg font-bold text-navy-900">ปริญญาตรี ครุศาสตร์</h3>
+                                <p class="text-sm font-medium text-brand-sky">สาขาคอมพิวเตอร์ศึกษา</p>
+                                <p class="text-xs text-slate-500">มหาวิทยาลัยราชภัฏอุดรธานี</p>
+                                
+                                <div class="pt-3 flex items-center gap-2">
+                                    <span class="text-xs text-slate-500">เกรดเฉลี่ยสะสม:</span>
+                                    <span class="text-sm font-extrabold text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200">
+                                        3.81
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- High School -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-slate-100 text-slate-700 rounded-2xl shrink-0 mt-1">
+                                <i data-lucide="school" class="w-8 h-8"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h3 class="text-lg font-bold text-navy-900">มัธยมศึกษาตอนปลาย</h3>
+                                <p class="text-sm font-medium text-brand-sky">สาขาวิทยาศาสตร์ - คณิตศาสตร์</p>
+                                <p class="text-xs text-slate-500">โรงเรียนสตรีราชินูทิศ</p>
+                                
+                                <div class="pt-3 flex items-center gap-2">
+                                    <span class="text-xs text-slate-500">เกรดเฉลี่ยสะสม:</span>
+                                    <span class="text-sm font-extrabold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-md border border-slate-200">
+                                        3.84
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-12 bg-white no-print">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="border-l-4 border-brand-blue pl-4 mb-8">
+                    <h2 class="text-2xl font-bold text-navy-900">ช่องทางการติดต่อ (Contact Information)</h2>
+                    <p class="text-sm text-slate-500">พร้อมสำหรับการสัมภาษณ์งานและการติดต่อสื่อสาร</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    
+                    <!-- Contact Info Cards -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 flex items-center gap-4 hover:shadow-md transition">
+                            <div class="p-3 bg-blue-600 text-white rounded-xl">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500">เบอร์โทรศัพท์</p>
+                                <a href="tel:0637819333" class="text-base font-bold text-navy-900 hover:text-brand-blue transition">
+                                    063-781-9333
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 flex items-center gap-4 hover:shadow-md transition">
+                            <div class="p-3 bg-sky-600 text-white rounded-xl">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500">อีเมล</p>
+                                <a href="mailto:nook0628@gmail.com" class="text-base font-bold text-navy-900 hover:text-brand-blue transition">
+                                    nook0628@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200/80 flex items-start gap-4 hover:shadow-md transition">
+                            <div class="p-3 bg-slate-800 text-white rounded-xl shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500">ที่อยู่</p>
+                                <p class="text-sm font-semibold text-navy-900 leading-relaxed">
+                                    403 โครงการเรสสิเด้น ตำบลฟ้าฮ่าม อำเภอเมือง จังหวัดเชียงใหม่ 50000
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Quick Copy Notification Toast -->
+                        <div id="toast" class="hidden p-3 bg-emerald-600 text-white text-xs font-semibold rounded-xl text-center shadow-lg transition-all">
+                            คัดลอกข้อมูลติดต่อเรียบร้อยแล้ว!
+                        </div>
+                    </div>
+
+                    <!-- Interactive Message Form -->
+                    <div class="lg:col-span-7 bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-navy-900 mb-1">ฝากข้อความติดต่อ</h3>
+                        <p class="text-xs text-slate-500 mb-6">หากต้องการสอบถามเพิ่มเติมหรือนัดหมายสัมภาษณ์งาน สามารถส่งข้อความได้ที่นี่</p>
+
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-700 mb-1">ชื่อ - นามสกุล / ชื่อบริษัท</label>
+                                    <input type="text" required placeholder="เช่น บ. เอกชน จำกัด" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-700 mb-1">เบอร์โทรศัพท์ / อีเมลติดต่อ</label>
+                                    <input type="text" required placeholder="เช่น 081-234-5678" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">ข้อความ</label>
+                                <textarea rows="3" required placeholder="พิมพ์ข้อความเพื่อนัดหมายสัมภาษณ์งาน..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-navy-800 hover:bg-brand-blue text-white font-semibold py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-sm">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                ส่งข้อความ
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 text-slate-400 py-8 border-t border-slate-800 text-xs">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <p class="font-medium text-slate-200 text-sm">สุกัญญา ทิพย์บุญผล (Sukanya Thipbunphon)</p>
+                <p class="text-slate-500 mt-0.5">Interactive Online Resume &amp; Portfolio</p>
+            </div>
+            <p>© 2026 Sukanya Thipbunphon. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl">
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                <i data-lucide="check-circle" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">ส่งข้อความสำเร็จ</h3>
+            <p class="text-xs text-slate-600">ขอบคุณสำหรับข้อความ นุ๊กนึกจะรีบติดต่อกลับโดยเร็วที่สุดครับ/ค่ะ</p>
+            <button onclick="closeModal()" class="w-full bg-brand-blue text-white py-2.5 rounded-xl text-xs font-bold hover:bg-navy-800 transition">
+                ตกลง
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Copy Contact Info Function
+        function copyContactInfo() {
+            const textToCopy = "สุกัญญา ทิพย์บุญผล (นุกนึก)\nเบอร์โทร: 063-781-9333\nอีเมล: nook0628@gmail.com";
+            
+            // Clipboard Copy Fallback
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            // Show Toast Notification
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Handle Contact Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            document.getElementById('success-modal').classList.remove('hidden');
+            document.getElementById('contact-form').reset();
+        }
+
+        function closeModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
